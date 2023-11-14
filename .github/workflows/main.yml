@@ -6,16 +6,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-steps:
+ steps:
       - uses: actions/checkout@v2
 
-      - name: Log in to Docker Hub
-        run: |
-          echo: ${{ secrets.DOCKER_USERNAME }}
-          echo: ${{ secrets.DOCKER_PASSWORD }}
-          
-    - name: Locker Hub
-         run: |
+        - name: Log in to Docker Hub
+           run: |
+             echo: ${{ secrets.DOCKER_USERNAME }}
+             echo: ${{ secrets.DOCKER_PASSWORD }}
           docker build . -t tapoos/igtest-down
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker tag app tapoos/igtest-down

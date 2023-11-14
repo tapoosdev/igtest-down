@@ -1,6 +1,6 @@
 FROM node:10-alpine
-RUN mkdir -p /home/app && chown -R node:node /home/app
-WORKDIR /home/app
+RUN mkdir -p ./app && chown -R node:node ./app
+WORKDIR /home/
 COPY . .
 EXPOSE 8085
 RUN npm install express

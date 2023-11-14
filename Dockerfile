@@ -1,9 +1,7 @@
-FROM node:slim
-WORKDIR /app
+FROM node:10-alpine
+RUN mkdir -p /home/app && chown -R node:node /home/app
+WORKDIR /home/app
 COPY . .
-RUN npm install
-# RUN npm ci --only=production
-COPY . .
-EXPOSE 32780
-RUN npm run build
+EXPOSE 8085
+RUN npm install express
 CMD [ "node", "index.js" ]

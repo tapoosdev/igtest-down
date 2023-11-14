@@ -11,10 +11,12 @@ steps:
 
       - name: Log in to Docker Hub
         run: |
-        echo: ${{ secrets.DOCKER_USERNAME }}
-        echo: ${{ secrets.DOCKER_PASSWORD }}
-        npm audit fix --force
-        docker build . -t tapoos/igtest-down
-        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-        docker tag app tapoos/igtest-down
-        docker push tapoos/igtest-down
+          echo: ${{ secrets.DOCKER_USERNAME }}
+          echo: ${{ secrets.DOCKER_PASSWORD }}
+          
+    - name: Locker Hub
+         run: |
+          docker build . -t tapoos/igtest-down
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker tag app tapoos/igtest-down
+          docker push tapoos/igtest-down

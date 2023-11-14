@@ -1,8 +1,8 @@
 FROM node:lts-alpine
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY package.json ./
+COPY . .
 
 RUN npm install
 # RUN npm ci --only=production
@@ -13,4 +13,4 @@ EXPOSE 32780
 
 RUN npm run build
 
-CMD [ "node", "dist/index.js" ]
+CMD [ "node", "index.js" ]
